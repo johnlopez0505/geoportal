@@ -1,0 +1,641 @@
+ /* Reseteo de márgenes y padding */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Estilo para el Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+/* Estilo para el Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Contenedor principal que se extiende de arriba a abajo */
+.container {
+    display: flex;
+    margin-top: 60px;
+    /* Espacio debajo del header fijo */
+    margin-bottom: 60px;
+    /* Espacio encima del footer fijo */
+    height: calc(100vh - 120px);
+    /* Resta el espacio del header y footer */
+    position: relative;
+}
+
+
+/* Estilo para el nav a la izquierda */
+nav {
+    width: 100px;
+    background-color: #f4f4f4;
+    height: 100%;
+    position: fixed;
+    top: 60px;
+    /* Empuja el nav debajo del header */
+    bottom: 60px;
+    /* Empuja el nav antes del footer */
+    padding: 15px;
+    justify-content: center;
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+nav a {
+    display: flex;
+    justify-content: center; /* Centra el contenido dentro del <a> horizontalmente */
+    align-items: center; /* Centra el contenido dentro del <a> verticalmente */
+    text-decoration: none;
+    color: #333;
+    margin: 1rem 0;
+}
+nav a img {
+  width: 60px; 
+  height: 50px;
+  cursor: pointer;
+}
+
+nav a:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+/* Contenido principal a la derecha */
+.content {
+    margin-left: 100px;
+    /* Da espacio al lado izquierdo para el nav */
+    padding-top: 9px;
+    width: calc(100% - 100px);
+    height: calc(100% - 0px);
+}
+
+/* Estilo para las secciones dentro del contenido */
+section {
+    height: calc(100% - 120px);
+}
+
+
+/* Botón de opción */
+.option-button {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    background-color: #fefdfd;
+    color: rgb(2, 2, 2);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 1000;
+}
+
+.option-button:hover {
+    background-color: #d4b837;
+}
+
+/* Estilo cuando el botón está activo */
+.option-button.active {
+    background-color: #d4b837;
+}
+
+/* Panel desplegable */
+.panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #f4f4f4;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 10000;
+}
+
+.panel.active {
+    transform: translateX(0);
+}
+
+/* Estilo del título */
+.panel h1 {
+  font-size: 28px;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.panel h1 span {
+  font-size: 32px;
+  color: #3498db;
+}
+
+/* Estilo de la imagen */
+.panel img {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 120px;
+}
+
+
+/* Texto general */
+.panel p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4d4d4d;
+  margin-bottom: 15px;
+  text-align: justify; /* Justificar el texto */
+}
+
+/* Subtítulos */
+.panel h2 {
+  font-size: 20px;
+  color: #34495e;
+  margin-top: 20px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+}
+
+.panel h3 {
+  font-size: 18px;
+  color: #5d6d7e;
+  margin-top: 15px;
+}
+
+/* Listas */
+.panel ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.panel ul li {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+/* Enlaces */
+.panel a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.panel a:hover {
+  text-decoration: underline;
+}
+
+/* Líneas divisorias */
+.panel hr {
+  border: none;
+  border-top: 1px solid #dcdcdc;
+  margin: 20px 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998; /* Just below the panel */
+  display: none; /* Oculto por defecto */
+}
+
+.overlay.active {
+  display: block;
+}
+
+#map {
+    width: 100%;
+    min-height: calc(100vh - 120px);
+}
+
+.custom-mouse-position {
+  position: absolute; /* Para posicionarlo dentro del mapa */
+  width: 230px;
+  height: 30px;
+  bottom: 0px; /* Margen desde la parte inferior */
+  left: 260px; /* Margen desde la parte izquierda */
+  background-color: rgb(255, 255, 255); /* Fondo semitransparente */
+  border: 1px solid rgb(122, 116, 116);
+  font-size: 16px; /* Tamaño del texto */
+  font-weight: bold;
+  font-family: Arial, sans-serif; /* Fuente */
+  display: flex; /* Usar flexbox */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items:first center; /* Centrar verticalmente */
+  
+}
+
+.scale-map{
+  position: absolute;
+  bottom: 0px;
+  left: 120px;
+  width: 130px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(122, 116, 116);
+  padding: 5px;
+  border: '1px solid black';
+  font-family: 'Arial, sans-serif';
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.ol-mouse-position {
+  left: 18px;
+  text-align: center;
+}
+
+#mouse-position ol-mouse-position {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  right: 0;
+}
+
+.ol-zoom{
+  left: 2%;
+  top: 70%;
+}
+
+.ol-zoom  .ol-zoom-in {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.ol-zoom  .ol-zoom-out {
+  width: 30px;
+  height: 30px;
+}
+
+
+.feature-info {
+  position: absolute;
+  top: 8px;
+  right: 0px;
+  background-color: rgb(69, 146, 148);
+  /* padding: 10px; */
+  border: 1px solid rgb(89, 86, 86);
+  z-index: 1000;
+  width: 350px;
+  max-width: 450px;
+  max-height: 400px;
+  color: white;
+  font-family: Arial, sans-serif;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  overflow-y: auto;
+}
+
+.feature-info .close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.feature-info .close-button:hover {
+  color: red;
+}
+
+.feature-info .header {
+  font-weight: bold;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color:  rgb(63, 98, 73);
+  color: white;
+  font-weight: bold;
+}
+
+.feature-info .extra-info {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-info.expanded .extra-info {
+  display: block;
+}
+
+
+.feature-info .toggle-button {
+  padding: 10px;
+  color: #333;
+  border-bottom: 2px solid rgb(89, 86, 86);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.feature-info .toggle-button:hover {
+  background-color: rgb(13, 131, 142);
+  color: rgb(7, 2, 2);
+}
+
+.feature-info .feature-data {
+  padding-left: 10px;
+  margin-top: 5px;
+  border-bottom: 2px solid  rgb(89, 86, 86);;
+}
+
+.feature-info .feature-data p {
+  padding: 5px;
+  margin: 0%;
+}
+
+
+
+/* Contenedor del spinner */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Spinner circular */
+.spinner {
+  width: 150px;
+  height: 150px;
+  border: 5px solid rgba(0, 0, 0, 0.1); /* Borde exterior (gris claro) */
+  border-top: 5px solid #3498db;       /* Borde superior (color principal) */
+  border-radius: 50%;                 /* Hacer el círculo */
+  animation: spin 0.3s linear infinite; /* Animación de giro */
+}
+
+/* Animación de giro */
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+
+
+#panelBase {
+  position: absolute;
+  top: 69px;
+  left: 100px;
+  width: 300px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 0px 8px 8px 0; 
+  padding: 15px;
+  max-width: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none; /* Lo ocultamos inicialmente si es necesario */
+}
+
+#panelBase #panelCapasHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #405f41; 
+  color: white;
+  font-weight: bold;
+  border-radius: 0px 8px 0 0; /* Bordes redondeados en la parte superior */
+  margin: -15px -15px 15px -15px; /* Ajustar márgenes para unir con el panel */
+}
+
+#panelBase button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+#panelBase button:hover {
+  background-color: rgb(63, 98, 73);
+  color: red;
+}
+
+/* Estilo para los botones de radio */
+#panelBase #baseMapaContainer input[type="radio"] {
+  margin-right: 8px;  /* Espacio entre el radio y la etiqueta */
+  vertical-align: middle;
+  accent-color: #4CAF50; /* Color del radio button (verde claro) */
+}
+
+/* Estilo para las etiquetas de los botones */
+#panelBase #baseMapaContainer label {
+  font-size: 14px; /* Tamaño de la fuente */
+  color: #333;  /* Color del texto */
+  cursor: pointer;  /* Hacer que el cursor sea de mano */
+  display: inline-block;
+  margin-bottom: 10px;  /* Espacio entre las opciones */
+  transition: color 0.3s ease;  /* Efecto de transición para el color */
+}
+
+/* Cambiar color de la etiqueta al pasar el ratón */
+#panelBase #baseMapaContainer label:hover {
+  color: #4CAF50;
+}
+
+/* Añadir separación entre las opciones de radio */
+#panelBase #baseMapaContainer br {
+  margin-bottom: 10px;
+}
+
+/* Estilo para los botones radio seleccionados */
+#panelBase #baseMapaContainer input[type="radio"]:checked + label {
+  font-weight: bold;  /* Negrita para la opción seleccionada */
+  color: #4CAF50;  /* Cambiar color del texto al verde cuando está seleccionado */
+}
+
+
+
+
+/* General: Aplica un modelo de caja consistente */
+* {
+  box-sizing: border-box;
+}
+
+/* Estilos para el panelGenerales */
+#panelGenerales {
+  position: absolute;
+  top: 69px;
+  left: 100px;
+  width: 300px; /* Ancho inicial */
+  max-width: 90vw; /* Máximo 90% del viewport */
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 0px 8px 8px 0;
+  padding: 0;
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden; /* Elimina desplazamiento horizontal */
+  z-index: 1000;
+  display: none; /* Ocultar inicialmente */
+}
+
+/* Encabezado del panel */
+#panelGenerales #panelCapasHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #405f41;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 2px;
+
+}
+
+#panelGenerales #baseMapaContainer {
+  margin: auto;
+  padding: 0 2px 0 2px;
+}
+
+/* Botones dentro del panel */
+#panelGenerales  button {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#panelGenerales #panelCapasHeader button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#panelGenerales #panelCapasHeader button:hover {
+  background-color: rgb(63, 98, 73);
+  color: red; /* Mejora la visibilidad */
+}
+
+#panelGenerales button:hover {
+  background-color: rgb(63, 98, 73);
+  color: white; /* Mejora la visibilidad */
+}
+
+/* Botón admin específico */
+.admin-button {
+  background-color: lightgreen;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 12px; /* Tamaño ajustado */
+  margin-bottom: 2px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin-button:hover {
+  background-color: rgb(26, 132, 56);
+  color: white; /* Mejora la visibilidad */
+}
+
+.leyenda {
+  position: absolute;
+  top: 69px;
+  left: 100px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0;
+  border: 1px solid #ccc;
+  width: 330px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+
+/* Estilo para el header de la leyenda */
+.leyenda-header {
+  display: flex;
+  color: white;
+  background-color: #405f41;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 2px 10px 2px 10px;
+}
+
+.leyenda-titulo {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.leyenda-boton-cerrar {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.leyenda-boton-cerrar:hover {
+  color: red;
+}
+
+/* Estilos para los elementos de leyenda de cada capa */
+.leyenda-item {
+  margin-bottom: 10px;
+  padding: 0 10px 0 10px;
+}
+
+.leyenda-imagen {
+  max-width: 200px;
+  margin-bottom: 10px;
+  padding: 0 10px 0 10px;
+}
+
+.no-capass-activas {
+  font-size: 16px;
+  color: gray;
+  text-align: center;
+}
+

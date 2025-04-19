@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.3.1/ol.css">
+    <link rel="stylesheet" href="../geoportal/css/styles.css">
+    <title>Geoportal Marce</title>
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <header>
+        <h1>Geoportal Provincia de Almería</h1>
+        <button class="option-button" id="optionBtn">☰</button>
+    </header>
+
+    <!-- Contenedor con nav y contenido -->
+    <div class="container">
+        <!-- Barra de navegación -->
+        <nav>
+            <a href="#" id="mapBase">
+                <img  src="../geoportal/imagenes/capa_base.png" alt="Mapa Base" title="Mapa Base">
+            </a>
+            <a href="#" id="mapCapa">
+                <img src="../geoportal/imagenes/capa.png" alt="Capas Almería" title="Capas Almería">
+            </a>
+            <a href="#" id="leyenda">
+                <img src="../geoportal/imagenes/leyenda_mapa.png" alt="Leyenda" title="Leyenda">
+            </a>
+        </nav>
+
+        <!-- Contenido principal -->
+        <div class="content">
+            <section id="map"></section>
+        </div>
+    </div>
+    <!-- Panel desplegable -->
+    <div class="panel" id="panel">
+        <h1>PRISMA TOPOGRAFÍA<span>🌍</span></h1>
+        <img src="../geoportal/imagenes/PRISMA TOPOGRAFIA.png " alt="Logo">
+        <p>Prisma topografía es una empresa de ingeniería y topografía con amplia experiencia, respondiendo de manera
+            positiva a nuestros clientes.</p>
+        <p>Contamos con personal capacitado, responsable y ágil, brindando soporte para las exigencias del medio en
+            actividades de topografía y construcción en todos los campos de la ingeniería, desarrollando proyectos en
+            áreas como vías, edificios, urbanizaciones alcantarillados, montajes electromecánicos, consultorías,
+            agrimensuras, geodesia, sistemas de información geográfica, catastro, etc.</p>
+        <hr>
+        <h2>Acerca de este Geoportal:</h2>
+        <p> Este geoportal muestra información de cartografía básica y temática de la provincia de Almería, enfocándose 
+            en <strong>el paro entre los años 2013 y 2023</strong>. Es una herramienta útil para analizar estadísticas como 
+            <em>densidad de población</em>, <em>tasa de paro</em>, y otros indicadores clave.</p>
+
+        <h2>Localización y Descripción General de la Provincia</h2>
+        <p>
+            La provincia de Almería se localiza en el sureste de la Península Ibérica, entre las latitudes
+            <strong>37º52'</strong> y <strong>36º40'</strong>, y las longitudes <strong>1º37'</strong> y
+            <strong>3º07'</strong>,
+            en el extremo oriental de la Comunidad Autónoma de Andalucía, en España.
+        </p>
+        <p>
+            Limita al norte con las provincias de <strong>Murcia</strong> y <strong>Granada</strong> (que la limita
+            también al oeste),
+            y al sur y sureste con el mar Mediterráneo. Ocupa una superficie de <strong>8.774 Km²</strong>
+            (1,7 % del territorio español), con <strong>219 km de costa</strong>.
+        </p>
+
+        <h3>Orografía</h3>
+        <p>
+            Almería es uno de los territorios más montañosos de España, atravesado de oeste a este por diversos
+            macizos montañosos de origen alpino, integrados en los <strong> sistemas béticos</strong>, particularmente
+            en la Cordillera Penibética. Esta disposición orográfica ha influido históricamente en el aislamiento
+            de la provincia y sus comarcas, marcando su desarrollo.
+        </p>
+        <p>Principales sistemas montañosos:</p>
+        <ul>
+            <li>
+                <strong>Sierra Nevada:</strong> Entra por el término de Fiñana, conectando con Sierra de Baza y
+                Sierra de los Filabres, famosa por las <em>canteras de mármol de Macael</em> y los <em>yacimientos de
+                    hierro de Serón y Bacares</em>.
+            </li>
+            <li>
+                <strong>Sierra de Gádor:</strong> Al oeste de la capital, conocida por su pasado <em>enriquecimiento en
+                    plomo</em>.
+            </li>
+            <li>
+                <strong>Sierra de las Estancias y Sierra de María:</strong> Ubicadas en el límite septentrional,
+                terminan
+                en Puerto Lumbreras.
+            </li>
+            <li>
+                <strong>Sierra del Cabo de Gata:</strong> Importante por sus <em>yacimientos de cuarzo aurífero</em>,
+                aunque
+                de poca relevancia económica.
+            </li>
+        </ul>
+
+        <h3>Hidrografía</h3>
+        <p>
+            Almería está surcada por ríos y riachuelos que, debido al clima subdesértico, se convierten en
+            <strong>ramblas</strong> cerca de la costa. Los principales ríos son:
+        </p>
+        <ul>
+            <li><strong>Río Andarax:</strong> Desemboca cerca de la capital.</li>
+            <li><strong>Río Almanzora:</strong> Desemboca junto a Villaricos.</li>
+            <li><strong>Río Grande de Adra, Alías y Aguas:</strong> Este último crea el sistema kárstico de Sorbas.</li>
+        </ul>
+        <p>
+            Además, la provincia cuenta con dos grandes pantanos: <strong>Benínar</strong> (al oeste) y
+            <strong>Almanzora</strong> (al este).
+        </p>
+
+        <h3>Clima</h3>
+        <p>
+            Almería es la zona más árida de España y Europa. La media de precipitaciones no suele superar los
+            <strong>300 mm anuales</strong>, descendiendo hacia el sur y el este, como en el Cabo de Gata, con solo
+            <strong>113 mm</strong> de media anual. Las lluvias son <em>torrenciales</em> e <em>irregulares</em>.
+        </p>
+        <p>
+            La influencia mediterránea origina una temperatura media anual elevada, cercana a los
+            <strong>18°C</strong>.
+        </p>
+
+        <h3>Costas</h3>
+        <p>
+            Las costas almerienses son escarpadas desde el límite con Murcia hasta la desembocadura del Almanzora.
+            Destacan:
+        </p>
+        <ul>
+            <li><strong>Golfo de Vera:</strong> Al sur del río Almanzora.</li>
+            <li><strong>Golfo de Almería:</strong> Comprendido entre el Cabo de Gata y Punta Elena, con la capital al
+                fondo.</li>
+        </ul>
+
+
+        <h4>Información de los datos:</h4>
+        <ul>
+            <li><strong>Principales patrones o hallazgos:</strong> Se observan tendencias como <em>[describir hallazgos
+                    clave, por ejemplo: áreas de alta densidad, zonas vulnerables, etc.]</em>.</li>
+            <li><strong>Fuentes de datos:</strong> Los datos han sido recopilados de fuentes confiables como <em>[nombre
+                    de instituciones o bases de datos]</em>.</li>
+        </ul>
+
+        <hr>
+
+        <h4>Enlaces relacionados:</h4>
+        <ul>
+            <li>
+                <a href="https://www.sepe.es/HomeSepe/que-es-el-sepe/estadisticas/datos-estadisticos/municipios/2013/agosto-2013.html" 
+                target="_blank">Estadísticas de la provincia de Almería</a>
+            </li>
+            <li>
+                <a href="https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/municipios/2013/agosto_2013/MUNI_ALMERIA_0813.pdf"
+                    target="_blank">
+                    Descargar paro de Almería - Agosto 2013
+                </a>
+            </li>
+            <li>
+                <a href="https://www.sepe.es" target="_blank">
+                    Documentación adicional (Sitio oficial)
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Prisma Topografía. Todos los derechos reservados.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.3.1/dist/ol.js"></script>
+    <script src="../geoportal/js/app.js"> </script>
+</body>
+
+</html>
